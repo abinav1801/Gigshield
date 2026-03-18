@@ -16,12 +16,14 @@ export default function DashboardScreen({ navigation }) {
 
       {/* Sticky Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.iconBtn}>
+        <TouchableOpacity style={styles.iconBtn} onPress={() => navigation.openDrawer()}>
           <MaterialIcons name="menu" size={24} color={colors.primary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>GigShield</Text>
-        <TouchableOpacity style={styles.notifBtn}>
+        <TouchableOpacity style={styles.notifBtn} onPress={() => navigation.navigate('Notifications')}>
           <MaterialIcons name="notifications" size={22} color={colors.primary} />
+          {/* Badge */}
+          <View style={{ position: 'absolute', top: 6, right: 6, width: 8, height: 8, borderRadius: 4, backgroundColor: '#ef4444', borderWidth: 1, borderColor: 'white' }} />
         </TouchableOpacity>
       </View>
 
@@ -83,7 +85,12 @@ export default function DashboardScreen({ navigation }) {
             <TouchableOpacity
               style={styles.actionBtn}
               activeOpacity={0.8}
-              onPress={() => navigation.navigate('Claims')}
+              onPress={() => navigation.navigate("MainTabs", {
+                screen: "App",
+                params: {
+                  screen: "Claims",
+                },
+              })}
             >
               <View style={styles.actionIcon}>
                 <MaterialIcons name="account-balance-wallet" size={22} color={colors.primary} />
@@ -113,22 +120,26 @@ export default function DashboardScreen({ navigation }) {
             <MaterialIcons name="psychology" size={22} color={colors.primary} />
             <Text style={styles.sectionTitle}>AI Risk Alert</Text>
           </View>
-          <View style={styles.alertCard}>
+          <TouchableOpacity
+            style={styles.alertCard}
+            activeOpacity={0.9}
+            onPress={() => navigation.navigate('Risk')}
+          >
             <View style={styles.alertIconWrap}>
-              <MaterialIcons name="cloud" size={28} color={colors.orange500} />
+              <MaterialIcons name="notifications-active" size={28} color={colors.orange500} />
             </View>
             <View style={{ flex: 1 }}>
               <View style={styles.alertTopRow}>
                 <Text style={styles.alertTitle}>Heavy Rain Risk</Text>
-                <View style={styles.riskBadge}>
-                  <Text style={styles.riskBadgeText}>MEDIUM</Text>
+                <View style={[styles.riskBadge, { backgroundColor: '#ef4444' }]}>
+                  <Text style={styles.riskBadgeText}>HIGH</Text>
                 </View>
               </View>
               <Text style={styles.alertDesc}>
-                Expected in {mockWeather.location} between 4 PM - 7 PM. Stay safe.
+                Expected in {mockWeather.location} between 4 PM - 7 PM. Click to see safety tips.
               </Text>
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

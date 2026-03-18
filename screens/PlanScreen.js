@@ -95,12 +95,12 @@ export default function PlanScreen({ navigation }) {
       <StatusBar barStyle="dark-content" backgroundColor={colors.bgLight} />
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.headerBtn} onPress={() => navigation.goBack()}>
-          <MaterialIcons name="arrow-back" size={24} color={colors.slate900} />
+        <TouchableOpacity style={styles.headerBtn} onPress={() => navigation.openDrawer()}>
+          <MaterialIcons name="menu" size={24} color={colors.primary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>GigShield</Text>
-        <TouchableOpacity style={styles.headerBtn}>
-          <MaterialIcons name="help-outline" size={24} color={colors.slate900} />
+        <TouchableOpacity style={styles.headerBtn} onPress={() => navigation.navigate('Notifications')}>
+          <MaterialIcons name="notifications" size={24} color={colors.primary} />
         </TouchableOpacity>
       </View>
 

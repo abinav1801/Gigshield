@@ -9,7 +9,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { colors, radius, fontSize } from '../constants/theme';
 import { mockClaim } from '../context/AppContext';
 
-const RAIN_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBVLsN43O8SuP1byVh2mykXYyfgMZHm-XeBbZJfrWWuAK6xxJLDkeEXD1UqgcjAM-E3mwvXi71ycWEJe2g_HSBTlPDCQUPB8QA4ZoTtPd_ULJDQSaPzMZr0HfHIBmJ1BOdGtEPmhGIdyYUC59xh7nHzr5Lw4sAkDyApzEV4IVzNy8swNasgm6W6kH9onN-i1QjVQHw69qcuixD1dnPM_1bJ-EyLUgAhAz-b05Gt6bL4s2xN7lbqlzg0pP6GBhgp2eTjcTIuQTLnj2bZ';
+const MAP_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuC_sgOMqbVwKmkECxQ0wqSTF0loDIyiUIzRcbgtHFpXy6yertBnFW5MHrmH-JubNTyG7kva1S3EyKMj9kvY6zwOr0T1GFLDpQOpHbZ1BMhW6E3rlg-B7t6atLkn57NWtE4aVFabwtVD6Zt3W48vWH9SCGM29mI9KxlD1Z4g86wtfSKi1N_dHE7aHIuHo_gMNJ1U8qwFj-Cn_AVUbcv-gSGcaFX_887xuYL26I8hIWDSQ3RLKUwq_-4neUfxBzGfSle0IGL62ifAgOME';
 
 export default function ClaimScreen({ navigation }) {
   return (
@@ -42,7 +42,7 @@ export default function ClaimScreen({ navigation }) {
         {/* Location image */}
         <View style={styles.imageWrap}>
           <ImageBackground
-            source={{ uri: RAIN_IMAGE }}
+            source={{ uri: MAP_IMAGE }}
             style={[styles.locationImage, { resizeMode: 'cover' }]}
           >
             <LinearGradient

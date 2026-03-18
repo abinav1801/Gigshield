@@ -35,7 +35,7 @@ export default function RiskScreen({ navigation }) {
           <MaterialIcons name="favorite" size={22} color={colors.primary} />
         </View>
         <Text style={styles.headerTitle}>GigShield Risk Monitor</Text>
-        <TouchableOpacity style={styles.notifBtn}>
+        <TouchableOpacity style={styles.notifBtn} onPress={() => navigation.navigate('Notifications')}>
           <MaterialIcons name="notifications" size={22} color={colors.primary} />
         </TouchableOpacity>
       </View>
