@@ -73,6 +73,12 @@ export default function ProfileScreen({ navigation }) {
               onPress={() => {
                 if (item.label === 'Notifications') {
                   navigation.navigate('Notifications');
+                } else if (item.label === 'My Account') {
+                  navigation.navigate('Account');
+                } else if (item.label === 'Insurance Policy') {
+                  navigation.navigate('Policy');
+                } else if (item.label === 'Claim History') {
+                  navigation.navigate('ClaimHistory');
                 } else if (item.label === 'Help & Support') {
                   navigation.navigate('Support');
                 } else if (item.label === 'Settings') {

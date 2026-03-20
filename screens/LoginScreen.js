@@ -55,9 +55,14 @@ export default function LoginScreen({ navigation }) {
           </View>
 
           <TouchableOpacity
-            style={styles.ctaBtn}
+            style={[styles.ctaBtn, phone.length !== 10 && styles.ctaBtnDisabled]}
             activeOpacity={0.85}
-            onPress={() => navigation.navigate('Otp', { phone })}
+            onPress={() => {
+              if (phone.length === 10) {
+                navigation.navigate('Otp', { phone });
+              }
+            }}
+            disabled={phone.length !== 10}
           >
             <Text style={styles.ctaBtnText}>Get OTP</Text>
           </TouchableOpacity>
@@ -65,6 +70,10 @@ export default function LoginScreen({ navigation }) {
 
         {/* Footer */}
         <View style={styles.footer}>
+          <Text style={styles.footerText}>
+            Don't have an account?{' '}
+            <Text style={styles.link} onPress={() => navigation.navigate('SignUp')}>Sign Up</Text>
+          </Text>
           <Text style={styles.footerText}>
             By continuing, you agree to our{' '}
             <Text style={styles.link}>Terms of Service</Text>
@@ -152,6 +161,11 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
   ctaBtnText: { fontSize: fontSize.lg, fontWeight: '700', color: colors.white },
+  ctaBtnDisabled: {
+    backgroundColor: colors.slate300,
+    shadowOpacity: 0,
+    elevation: 0,
+  },
   footer: { alignItems: 'center', marginTop: 32, paddingHorizontal: 24, gap: 16 },
   footerText: { fontSize: fontSize.sm, color: colors.slate500, textAlign: 'center', lineHeight: 20 },
   link: { color: colors.primary, fontWeight: '600' },

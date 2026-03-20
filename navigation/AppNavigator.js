@@ -17,6 +17,10 @@ import ProfileScreen from '../screens/ProfileScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import SupportScreen from '../screens/SupportScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import AccountScreen from '../screens/AccountScreen';
+import PolicyScreen from '../screens/PolicyScreen';
+import ClaimHistoryScreen from '../screens/ClaimHistoryScreen';
+import SignUpScreen from '../screens/SignUpScreen';
 
 import { colors, fontSize, radius } from '../constants/theme';
 import { mockUser } from '../context/AppContext';
@@ -208,6 +212,10 @@ export default function AppNavigator() {
         <Stack.Screen name="Notifications" component={NotificationScreen} />
         <Stack.Screen name="Support" component={SupportScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="Account" component={AccountScreen} />
+        <Stack.Screen name="Policy" component={PolicyScreen} />
+        <Stack.Screen name="ClaimHistory" component={ClaimHistoryScreen} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
