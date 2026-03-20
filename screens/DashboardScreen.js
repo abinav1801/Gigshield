@@ -104,9 +104,9 @@ export default function DashboardScreen({ navigation }) {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Active Plan</Text>
           <View style={styles.activePlanCard}>
-            <View>
+            <View style={{ flex: 1, marginRight: 12 }}>
               <Text style={styles.planName}>{mockPlan.name}</Text>
-              <Text style={styles.planDesc}>{mockPlan.price} • Comprehensive Coverage</Text>
+              <Text style={styles.planDesc}>Compensates income loss due to weather disruptions</Text>
             </View>
             <View style={styles.activeBadge}>
               <Text style={styles.activeBadgeText}>Active</Text>
@@ -136,7 +136,7 @@ export default function DashboardScreen({ navigation }) {
                 </View>
               </View>
               <Text style={styles.alertDesc}>
-                Expected in {mockWeather.location} between 4 PM - 7 PM. Click to see safety tips.
+                Income loss due to heavy rain is likely in {mockWeather.location}. Earnings protection is active.
               </Text>
             </View>
           </TouchableOpacity>

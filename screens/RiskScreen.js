@@ -107,7 +107,7 @@ export default function RiskScreen({ navigation }) {
             {/* Alert */}
             <View style={styles.alertBox}>
               <MaterialIcons name="warning" size={20} color={colors.primary} />
-              <Text style={styles.alertText}>Rainfall expected to increase in 2 hours</Text>
+              <Text style={styles.alertText}>Income loss due to Heavy Rain is likely in 2 hours</Text>
             </View>
           </View>
         </View>
@@ -117,14 +117,19 @@ export default function RiskScreen({ navigation }) {
           <Text style={styles.tipsTitle}>GIG WORKER SAFETY TIPS</Text>
           {[
             {
-              icon: 'check-circle',
-              title: 'Rain gear recommended',
-              desc: 'Keep your waterproof kit ready for the next 2h.',
+              icon: 'umbrella',
+              title: 'Income loss protection active',
+              desc: 'Heavy rain (>50mm) detected. Your earnings are being monitored.',
             },
             {
-              icon: 'route',
-              title: 'Avoid low-lying areas',
-              desc: 'Mount Road expected to have moderate water logging.',
+              icon: 'thermostat',
+              title: 'Heat safety alert',
+              desc: 'Avoid peak hours if temp > 40°C. Income loss is covered.',
+            },
+            {
+              icon: 'masks',
+              title: 'AQI hazardous warning',
+              desc: 'AQI > 300 detected. Wear N95 masks and prioritize safety.',
             },
           ].map((tip, i) => (
             <View key={i} style={styles.tipCard}>

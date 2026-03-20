@@ -9,9 +9,9 @@ import { colors, radius, fontSize, spacing } from '../constants/theme';
 
 export default function SupportScreen({ navigation }) {
   const faqs = [
-    { q: 'How do I file a claim?', a: 'Go to the Claims tab and click on "File New Claim". Follow the prompts to submit your details.' },
+    { q: 'What does GigShield cover?', a: 'GigShield covers income loss caused by environmental disruptions such as heavy rain, cyclone alerts, extreme heat, and air pollution.' },
+    { q: 'What is not covered?', a: 'Health issues, accidents, vehicle damage, and personal reasons are not covered.' },
     { q: 'When will I get my payout?', a: 'Payouts are typically processed within 24-48 hours after a claim is approved.' },
-    { q: 'What does "Clean Days" mean?', a: 'Clean Days are consecutive days without any severe weather incidents or claims.' },
     { q: 'How can I change my plan?', a: 'You can browse and switch plans in the "Plans" tab.' },
   ];
 

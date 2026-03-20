@@ -68,15 +68,15 @@ function PlanCard({ plan, onSelect }) {
       <View style={styles.features}>
         <View style={styles.featureRow}>
           <MaterialIcons name="check-circle" size={18} color={colors.primary} />
-          <Text style={styles.featureText}>Covers up to <Text style={styles.bold}>{plan.coverage}</Text></Text>
+          <Text style={styles.featureText}>Covers <Text style={styles.bold}>income loss</Text> due to weather disruptions</Text>
         </View>
         <View style={styles.featureRow}>
-          <MaterialIcons name="umbrella" size={18} color={colors.primary} />
-          <Text style={[styles.featureText, styles.featureSubText]}>Income loss due to heavy rain, pollution & alerts</Text>
+          <MaterialIcons name="security" size={18} color={colors.primary} />
+          <Text style={[styles.featureText, styles.featureSubText]}>Weekly income protection</Text>
         </View>
         <View style={styles.featureRow}>
-          <MaterialIcons name="notifications-active" size={18} color={colors.primary} />
-          <Text style={[styles.featureText, styles.featureSubText]}>Extreme weather alerts</Text>
+          <MaterialIcons name="sync" size={18} color={colors.primary} />
+          <Text style={[styles.featureText, styles.featureSubText]}>Automatic claim triggering</Text>
         </View>
       </View>
     </View>

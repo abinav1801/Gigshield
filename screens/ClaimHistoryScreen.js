@@ -9,10 +9,10 @@ import { colors, radius, fontSize } from '../constants/theme';
 
 export default function ClaimHistoryScreen({ navigation }) {
   const claims = [
-    { id: 'CLM-001', type: 'Rainfall Disruption', date: '12 Mar 2026', amount: '₹1,200', status: 'Paid', statusColor: '#16a34a' },
-    { id: 'CLM-002', type: 'Lightning Alert', date: '28 Feb 2026', amount: '₹800', status: 'Paid', statusColor: '#16a34a' },
-    { id: 'CLM-003', type: 'Flood Warning', date: '05 Feb 2026', amount: '₹2,500', status: 'Rejected', statusColor: '#ef4444' },
-    { id: 'CLM-004', type: 'Rainfall Disruption', date: '15 Jan 2026', amount: '₹1,500', status: 'Paid', statusColor: '#16a34a' },
+    { id: 'CLM-001', type: 'Income loss due to Heavy Rain', date: '12 Mar 2026', amount: '₹450', status: 'Paid', statusColor: '#16a34a' },
+    { id: 'CLM-002', type: 'Income loss due to Cyclone Alert', date: '28 Feb 2026', amount: '₹900', status: 'Paid', statusColor: '#16a34a' },
+    { id: 'CLM-003', type: 'Income loss due to Extreme Heat', date: '15 Jan 2026', amount: '₹337.5', status: 'Paid', statusColor: '#16a34a' },
+    { id: 'CLM-004', type: 'Income loss due to Air Pollution', date: '05 Jan 2026', amount: '₹562.5', status: 'Paid', statusColor: '#16a34a' },
   ];
 
   return (

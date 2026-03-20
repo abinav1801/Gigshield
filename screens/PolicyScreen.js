@@ -10,10 +10,10 @@ import { colors, radius, fontSize } from '../constants/theme';
 
 export default function PolicyScreen({ navigation }) {
   const coverageItems = [
-    { label: 'Work Disruption', value: '₹5,000 / day', icon: 'event-busy' },
-    { label: 'Accidental Injury', value: 'Up to ₹2,00,000', icon: 'medical-services' },
-    { label: 'Identity Theft', value: 'Up to ₹50,000', icon: 'fingerprint' },
-    { label: 'Device Protection', value: 'Up to ₹15,000', icon: 'smartphone' },
+    { label: 'Income loss due to Heavy Rain', value: '₹900 / full day', icon: 'opacity' },
+    { label: 'Income loss due to Cyclone Alerts', value: '₹900 / event', icon: 'cyclone' },
+    { label: 'Income loss due to Extreme Heat', value: '₹112.5 / hour', icon: 'wb-sunny' },
+    { label: 'Income loss due to Air Pollution', value: '₹112.5 / hour', icon: 'air' },
   ];
 
   return (

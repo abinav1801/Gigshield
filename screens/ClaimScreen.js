@@ -34,7 +34,7 @@ export default function ClaimScreen({ navigation }) {
               <Text style={styles.bannerTitle}>Heavy Rain Detected</Text>
             </View>
             <Text style={styles.bannerSubtitle}>
-              Automatic disruption monitoring is active for your current location.
+              Monitoring income loss due to weather disruptions in your area.
             </Text>
           </View>
         </View>

@@ -37,7 +37,7 @@ export default function PayoutScreen({ navigation }) {
             <MaterialIcons name="check-circle" size={72} color={colors.green600} />
           </View>
           <Text style={styles.successTitle}>₹450 Compensation Sent</Text>
-          <Text style={styles.successSubtitle}>GigShield Protection Active</Text>
+          <Text style={styles.successSubtitle}>Income Loss Protection Active</Text>
         </View>
 
         {/* Details card */}

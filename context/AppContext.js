@@ -2,6 +2,9 @@ import React, { createContext, useContext, useState } from 'react';
 
 const AppContext = createContext(null);
 
+export const HOURLY_RATE = 112.5;
+export const DAILY_RATE = 900;
+
 export const mockUser = {
   name: 'Ramkumar S',
   phone: '+91 98765 43210',
@@ -12,7 +15,7 @@ export const mockUser = {
 export const mockPlan = {
   name: 'Standard Plan',
   price: '₹25/week',
-  coverage: '₹700',
+  coverage: '₹900/day',
   status: 'Active',
 };
 
@@ -20,16 +23,17 @@ export const mockWeather = {
   rainfall: 65, // > 50 triggers claim
   aqi: 85,
   temp: 34,
+  cycloneAlert: false,
   riskLevel: 'Medium Risk',
   riskScore: 62,
-  location: 'Koramangala & HSR Layout',
+  location: 'Chennai (Central Zone)',
 };
 
 export const mockClaim = {
   workInterruption: '4 hours',
   estimatedLoss: '₹450',
-  zone: 'Sector 42, High Risk',
-  reason: 'Heavy Rain Disruption',
+  zone: 'Chennai Sector 4, High Risk',
+  reason: 'Income loss due to Heavy Rain',
   duration: '4 hours (2 PM - 6 PM)',
   transactionId: '#GS82931',
 };
