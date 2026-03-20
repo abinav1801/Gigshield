@@ -6,6 +6,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { colors, radius, fontSize } from '../constants/theme';
+import { useApp } from '../context/AppContext';
 
 const MOCK_NOTIFS = [
   {
@@ -43,6 +44,7 @@ const MOCK_NOTIFS = [
 ];
 
 export default function NotificationScreen({ navigation }) {
+
   const getIcon = (type) => {
     switch (type) {
       case 'claim': return 'payments';

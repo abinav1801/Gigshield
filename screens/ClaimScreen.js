@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { colors, radius, fontSize } from '../constants/theme';
-import { mockClaim } from '../context/AppContext';
+import { mockClaim, useApp } from '../context/AppContext';
 
 const MAP_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuC_sgOMqbVwKmkECxQ0wqSTF0loDIyiUIzRcbgtHFpXy6yertBnFW5MHrmH-JubNTyG7kva1S3EyKMj9kvY6zwOr0T1GFLDpQOpHbZ1BMhW6E3rlg-B7t6atLkn57NWtE4aVFabwtVD6Zt3W48vWH9SCGM29mI9KxlD1Z4g86wtfSKi1N_dHE7aHIuHo_gMNJ1U8qwFj-Cn_AVUbcv-gSGcaFX_887xuYL26I8hIWDSQ3RLKUwq_-4neUfxBzGfSle0IGL62ifAgOME';
 
@@ -30,7 +30,7 @@ export default function ClaimScreen({ navigation }) {
         <View style={styles.bannerWrap}>
           <View style={styles.banner}>
             <View style={styles.bannerRow}>
-              <MaterialIcons name="opacity" size={28} color={colors.white} />
+              <MaterialIcons name="opacity" size={28} color="white" />
               <Text style={styles.bannerTitle}>Heavy Rain Detected</Text>
             </View>
             <Text style={styles.bannerSubtitle}>
@@ -82,7 +82,7 @@ export default function ClaimScreen({ navigation }) {
             <View style={styles.pulseWrap}>
               <View style={styles.pulseRing} />
               <View style={styles.pulseInner}>
-                <MaterialIcons name="sync" size={22} color={colors.white} />
+                <MaterialIcons name="sync" size={22} color="white" />
               </View>
             </View>
             <View style={{ flex: 1 }}>
@@ -99,7 +99,7 @@ export default function ClaimScreen({ navigation }) {
             onPress={() => navigation.navigate('Payout')}
           >
             <Text style={styles.trackBtnText}>Track Claim Status</Text>
-            <MaterialIcons name="arrow-forward" size={18} color={colors.white} />
+            <MaterialIcons name="arrow-forward" size={18} color="white" />
           </TouchableOpacity>
         </View>
       </ScrollView>

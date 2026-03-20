@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { colors, radius, fontSize } from '../constants/theme';
-import { mockClaim } from '../context/AppContext';
+import { mockClaim, useApp } from '../context/AppContext';
 
 const detailRows = [
   { label: 'Reason', value: mockClaim.reason },
@@ -16,6 +16,7 @@ const detailRows = [
 ];
 
 export default function PayoutScreen({ navigation }) {
+
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.bgLight} />

@@ -6,11 +6,11 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { colors, radius, fontSize } from '../constants/theme';
+import { useApp } from '../context/AppContext';
 
 export default function SettingsScreen({ navigation }) {
   const [notifications, setNotifications] = useState(true);
   const [biometrics, setBiometrics] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
 
   const SettingRow = ({ icon, label, sub, right }) => (
     <View style={styles.settingRow}>
@@ -66,19 +66,6 @@ export default function SettingsScreen({ navigation }) {
                 onValueChange={setBiometrics}
                 trackColor={{ false: colors.slate200, true: colors.primaryMedium }}
                 thumbColor={biometrics ? colors.primary : colors.white}
-              />
-            }
-          />
-          <SettingRow 
-            icon="dark-mode" 
-            label="Dark Mode" 
-            sub="Switch between light and dark theme"
-            right={
-              <Switch 
-                value={darkMode} 
-                onValueChange={setDarkMode}
-                trackColor={{ false: colors.slate200, true: colors.primaryMedium }}
-                thumbColor={darkMode ? colors.primary : colors.white}
               />
             }
           />

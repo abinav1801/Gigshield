@@ -12,7 +12,7 @@ export default function SignUpScreen({ navigation }) {
   const [phone, setPhone] = useState('');
   const [platform, setPlatform] = useState('');
 
-  const platforms = ['Zomato', 'Swiggy', 'Uber', 'Ola', 'Other'];
+  const platforms = ['Zomato', 'Swiggy', 'Other'];
 
   const isFormValid = name.length > 2 && phone.length === 10 && platform !== '';
 

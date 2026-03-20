@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { colors, radius, fontSize } from '../constants/theme';
-import { mockUser, mockPlan, mockWeather, mockEarnings } from '../context/AppContext';
+import { mockUser, mockPlan, mockWeather, mockEarnings, useApp } from '../context/AppContext';
 
 export default function DashboardScreen({ navigation }) {
   return (
@@ -44,7 +44,7 @@ export default function DashboardScreen({ navigation }) {
         {/* Earnings Card */}
         <View style={styles.section}>
           <LinearGradient
-            colors={['#fb7f13', '#ea580c']}
+            colors={[colors.primary, colors.orange600]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.earningsCard}

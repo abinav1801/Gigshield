@@ -7,18 +7,19 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { colors, radius, fontSize } from '../constants/theme';
-import { mockWeather } from '../context/AppContext';
+import { mockWeather, useApp } from '../context/AppContext';
 
 const MAP_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuC_sgOMqbVwKmkECxQ0wqSTF0loDIyiUIzRcbgtHFpXy6yertBnFW5MHrmH-JubNTyG7kva1S3EyKMj9kvY6zwOr0T1GFLDpQOpHbZ1BMhW6E3rlg-B7t6atLkn57NWtE4aVFabwtVD6Zt3W48vWH9SCGM29mI9KxlD1Z4g86wtfSKi1N_dHE7aHIuHo_gMNJ1U8qwFj-Cn_AVUbcv-gSGcaFX_887xuYL26I8hIWDSQ3RLKUwq_-4neUfxBzGfSle0IGL62ifAgOME';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 // Circular progress ring via absolute positioned Views (SVG not needed)
 function RiskGauge({ score }) {
+  
   return (
     <View style={gauge.wrap}>
       <View style={gauge.outer}>
         {/* Inner filled arc simulated with a colored ring overlay */}
-        <View style={[gauge.fill, { borderColor: colors.primary }]} />
+        <View style={gauge.fill} />
         <Text style={gauge.label}>{score}%</Text>
       </View>
     </View>
@@ -26,6 +27,7 @@ function RiskGauge({ score }) {
 }
 
 export default function RiskScreen({ navigation }) {
+
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.bgLight} />
@@ -80,12 +82,7 @@ export default function RiskScreen({ navigation }) {
                 <Text style={styles.riskLevel}>{mockWeather.riskLevel}</Text>
               </View>
               {/* Gauge */}
-              <View style={gauge.wrap}>
-                <View style={gauge.outer}>
-                  <View style={[gauge.fill, { borderColor: colors.primary }]} />
-                  <Text style={gauge.label}>{mockWeather.riskScore}%</Text>
-                </View>
-              </View>
+              <RiskGauge score={mockWeather.riskScore} />
             </View>
 
             {/* Sub metrics */}

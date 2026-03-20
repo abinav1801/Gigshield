@@ -6,7 +6,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { colors, radius, fontSize } from '../constants/theme';
-import { mockUser } from '../context/AppContext';
+import { mockUser, useApp } from '../context/AppContext';
 
 export default function ProfileScreen({ navigation }) {
 

@@ -41,10 +41,14 @@ export const mockEarnings = {
 
 export function AppProvider({ children }) {
   const [selectedPlan, setSelectedPlan] = useState(mockPlan);
+  
   const claimTriggered = mockWeather.rainfall > 50;
 
   return (
-    <AppContext.Provider value={{ selectedPlan, setSelectedPlan, claimTriggered }}>
+    <AppContext.Provider value={{ 
+      selectedPlan, setSelectedPlan, 
+      claimTriggered
+    }}>
       {children}
     </AppContext.Provider>
   );

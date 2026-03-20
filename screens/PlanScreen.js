@@ -6,6 +6,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { colors, radius, fontSize } from '../constants/theme';
+import { useApp } from '../context/AppContext';
 
 const plans = [
   {
@@ -35,8 +36,9 @@ const plans = [
 ];
 
 function PlanCard({ plan, onSelect }) {
+  
   return (
-    <View style={[styles.card, plan.featured && styles.cardFeatured]}>
+    <View style={[styles.card, plan.featured && { borderColor: colors.primary, borderWidth: 2 }]}>
       {plan.featured && (
         <View style={styles.popularBadge}>
           <Text style={styles.popularText}>MOST POPULAR</Text>
