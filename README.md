@@ -165,15 +165,11 @@ Instant payout sent to worker
 ## 🏗️ System Architecture
 
 ```
-Flutter Mobile App  
+React Native (Expo) App  
         ↓  
-Firebase Backend (Auth + Firestore)  
+React Context API (Local State)  
         ↓  
-Python AI Services  
-        ↓  
-External APIs (Weather, AQI, Disaster)  
-        ↓  
-Payment Gateway (UPI / Razorpay sandbox)  
+External APIs Simulation (Weather, AQI, Disaster)  
 ```
 
 ---
@@ -182,25 +178,22 @@ Payment Gateway (UPI / Razorpay sandbox)
 
 ### 📱 Frontend
 
-* Flutter
+* React Native (Expo)
+* React Navigation
+* Expo Linear Gradient
+* Expo Vector Icons
 
-### 🔧 Backend
+### 🔧 Data Management
 
-* Firebase Authentication
-* Firestore Database
-* Cloud Functions
+* AppContext (Global Provider Strategy)
+* Mock Data Services
+* Simulated Parametric Logic
 
-### 🤖 AI / ML
+### 🌐 Simulation APIs
 
-* Python
-* Scikit-learn
-* Pandas
-
-### 🌐 APIs
-
-* Weather API
-* Air Quality API
-* Disaster Alert API
+* OpenWeather (Simulated)
+* Air Quality (Simulated)
+* Disaster Alert (Simulated)
 
 ---
 
@@ -240,14 +233,14 @@ Payment Gateway (UPI / Razorpay sandbox)
 ## 📂 Repository Structure
 
 ```
-gigshield/
+GigShield/
 │
-├── README.md  
-├── prototype/  
-│   ├── login_screen  
-│   ├── dashboard  
-│   ├── insurance_plan  
-│   └── claim_simulation  
+├── README.md           # Project Documentation
+├── App.js              # Application Root & Navigators
+├── screens/            # UI Components (Dashboard, Risk, Claim, etc.)
+├── context/            # Global State (AppContext)
+├── constants/          # Theme & Design Tokens
+└── assets/             # Images & Static Media
 ```
 
 ---
