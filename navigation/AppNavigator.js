@@ -15,6 +15,8 @@ import ClaimScreen from '../screens/ClaimScreen';
 import PayoutScreen from '../screens/PayoutScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import NotificationScreen from '../screens/NotificationScreen';
+import SupportScreen from '../screens/SupportScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 import { colors, fontSize, radius } from '../constants/theme';
 import { mockUser } from '../context/AppContext';
@@ -41,13 +43,13 @@ function CustomDrawerContent(props) {
           label="Support"
           labelStyle={{ marginLeft: -5 }}
           icon={({ color, size }) => <MaterialIcons name="help-outline" size={size} color={color} />}
-          onPress={() => { }}
+          onPress={() => props.navigation.navigate('Support')}
         />
         <DrawerItem
           label="Settings"
           labelStyle={{ marginLeft: -5 }}
           icon={({ color, size }) => <MaterialIcons name="settings" size={size} color={color} />}
-          onPress={() => { }}
+          onPress={() => props.navigation.navigate('Settings')}
         />
       </View>
       <View style={drawerStyles.footer}>
@@ -204,6 +206,8 @@ export default function AppNavigator() {
         <Stack.Screen name="Otp" component={OtpScreen} />
         <Stack.Screen name="MainTabs" component={DrawerNavigator} />
         <Stack.Screen name="Notifications" component={NotificationScreen} />
+        <Stack.Screen name="Support" component={SupportScreen} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -16,6 +16,7 @@ export default function ProfileScreen({ navigation }) {
     { icon: 'history', label: 'Claim History', sub: 'Past claims & payments' },
     { icon: 'notifications', label: 'Notifications', sub: 'Alerts & updates' },
     { icon: 'help', label: 'Help & Support', sub: 'FAQs & contact us' },
+    { icon: 'settings', label: 'Settings', sub: 'App preferences & security' },
     { icon: 'logout', label: 'Logout', sub: 'Sign out of your account', dangerous: true },
   ];
 
@@ -72,6 +73,10 @@ export default function ProfileScreen({ navigation }) {
               onPress={() => {
                 if (item.label === 'Notifications') {
                   navigation.navigate('Notifications');
+                } else if (item.label === 'Help & Support') {
+                  navigation.navigate('Support');
+                } else if (item.label === 'Settings') {
+                  navigation.navigate('Settings');
                 } else if (item.label === 'Logout') {
                   navigation.reset({
                     index: 0,
