@@ -4,7 +4,7 @@ import {
   StyleSheet, Image, StatusBar,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MaterialIcons } from '@expo/vector-icons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { colors, radius, fontSize } from '../constants/theme';
 import { mockUser } from '../context/AppContext';
 
@@ -66,8 +66,8 @@ export default function ProfileScreen({ navigation }) {
         {/* Menu Items */}
         <View style={styles.menuSection}>
           {menuItems.map((item, i) => (
-            <TouchableOpacity 
-              key={i} 
+            <TouchableOpacity
+              key={i}
               style={styles.menuItem}
               onPress={() => {
                 if (item.label === 'Notifications') {
@@ -81,10 +81,10 @@ export default function ProfileScreen({ navigation }) {
               }}
             >
               <View style={[styles.menuIconWrap, item.dangerous && styles.dangerIcon]}>
-                <MaterialIcons 
-                  name={item.icon} 
-                  size={22} 
-                  color={item.dangerous ? '#ef4444' : colors.primary} 
+                <MaterialIcons
+                  name={item.icon}
+                  size={22}
+                  color={item.dangerous ? '#ef4444' : colors.primary}
                 />
               </View>
 

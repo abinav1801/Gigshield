@@ -4,7 +4,7 @@ import {
   StyleSheet, StatusBar,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MaterialIcons } from '@expo/vector-icons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { colors, radius, fontSize } from '../constants/theme';
 
 const MOCK_NOTIFS = [
@@ -56,7 +56,7 @@ export default function NotificationScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.bgLight} />
-      
+
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
@@ -129,8 +129,8 @@ const styles = StyleSheet.create({
   notifTitle: { fontSize: fontSize.base, fontWeight: '700', color: colors.slate900 },
   notifTime: { fontSize: 10, color: colors.slate400 },
   notifDesc: { fontSize: fontSize.sm, color: colors.slate600, lineHeight: 20 },
-  actionBtn: { 
-    marginTop: 12, 
+  actionBtn: {
+    marginTop: 12,
     alignSelf: 'flex-start',
     backgroundColor: colors.primaryLight,
     paddingHorizontal: 12, paddingVertical: 6,

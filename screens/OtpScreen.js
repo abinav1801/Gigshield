@@ -1,16 +1,40 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   View, Text, TextInput, TouchableOpacity, StyleSheet,
   ScrollView, StatusBar,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MaterialIcons } from '@expo/vector-icons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { colors, radius, fontSize } from '../constants/theme';
 
 export default function OtpScreen({ navigation, route }) {
   const phone = route?.params?.phone || '98765 43210';
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
+  const [timer, setTimer] = useState(25);
+  const [canResend, setCanResend] = useState(false);
   const inputs = useRef([]);
+
+  useEffect(() => {
+    let interval;
+    if (timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+    } else {
+      setCanResend(true);
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [timer]);
+
+  const handleResend = () => {
+    if (canResend) {
+      setTimer(25);
+      setCanResend(false);
+      // Logic to resend OTP would go here
+      console.log('OTP Resent');
+    }
+  };
 
   const handleChange = (text, index) => {
     const newOtp = [...otp];
@@ -68,7 +92,12 @@ export default function OtpScreen({ navigation, route }) {
         <View style={styles.resendWrap}>
           <Text style={styles.resendText}>
             Didn't receive the code?{' '}
-            <Text style={styles.resendLink}>Resend OTP in 25s</Text>
+            <Text
+              style={[styles.resendLink, !canResend && { opacity: 0.6 }]}
+              onPress={canResend ? handleResend : null}
+            >
+              {timer > 0 ? `Resend OTP in ${timer}s` : 'Resend OTP'}
+            </Text>
           </Text>
         </View>
 

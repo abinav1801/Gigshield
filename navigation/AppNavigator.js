@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-import { MaterialIcons } from '@expo/vector-icons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 import LoginScreen from '../screens/LoginScreen';
@@ -41,13 +41,13 @@ function CustomDrawerContent(props) {
           label="Support"
           labelStyle={{ marginLeft: -5 }}
           icon={({ color, size }) => <MaterialIcons name="help-outline" size={size} color={color} />}
-          onPress={() => {}}
+          onPress={() => { }}
         />
         <DrawerItem
           label="Settings"
           labelStyle={{ marginLeft: -5 }}
           icon={({ color, size }) => <MaterialIcons name="settings" size={size} color={color} />}
-          onPress={() => {}}
+          onPress={() => { }}
         />
       </View>
       <View style={drawerStyles.footer}>
@@ -167,29 +167,29 @@ function DrawerNavigator() {
         drawerLabelStyle: { fontWeight: '600', marginLeft: -10 },
       }}
     >
-      <Drawer.Screen 
-        name="App" 
-        component={MainTabs} 
-        options={{ 
+      <Drawer.Screen
+        name="App"
+        component={MainTabs}
+        options={{
           drawerLabel: ' Dashboard',
           drawerIcon: ({ color, size }) => <MaterialIcons name="dashboard" size={size} color={color} />
-        }} 
+        }}
       />
-      <Drawer.Screen 
-        name="ProfileDrawer" 
-        component={ProfileScreen} 
-        options={{ 
+      <Drawer.Screen
+        name="ProfileDrawer"
+        component={ProfileScreen}
+        options={{
           drawerLabel: ' My Profile',
           drawerIcon: ({ color, size }) => <MaterialIcons name="person" size={size} color={color} />
-        }} 
+        }}
       />
-      <Drawer.Screen 
-        name="ClaimsDrawer" 
-        component={ClaimsNavigator} 
-        options={{ 
+      <Drawer.Screen
+        name="ClaimsDrawer"
+        component={ClaimsNavigator}
+        options={{
           drawerLabel: ' My Claims',
           drawerIcon: ({ color, size }) => <MaterialIcons name="history" size={size} color={color} />
-        }} 
+        }}
       />
     </Drawer.Navigator>
   );
@@ -232,7 +232,7 @@ const drawerStyles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: colors.slate100,
   },
-  logoutBtn: { flexDirection: 'row', alignItems: 'center', gap: 10, padding: 10, marginLeft: -10},
+  logoutBtn: { flexDirection: 'row', alignItems: 'center', gap: 10, padding: 10, marginLeft: -10 },
   logoutText: { color: '#ef4444', fontWeight: '700', fontSize: fontSize.base },
 });
 
