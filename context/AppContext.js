@@ -1,58 +1,144 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { authAPI, userAPI, planAPI, weatherAPI, saveToken, removeToken } from '../services/api';
 
 const AppContext = createContext(null);
 
+// Keep these for reference in case API is down (fallback)
 export const HOURLY_RATE = 112.5;
 export const DAILY_RATE = 900;
 
-export const mockUser = {
-  name: 'Ramkumar S',
-  phone: '+91 98765 43210',
-  platform: 'Swiggy Delivery Partner',
-  avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDnufu2MPy_5g6NIDt8boFei__4A02fc5AbDOWGvjxRtmy91fYo53OhbLW2xEIoS6jPntYgvHvHTC6mrTVwbA77t7Lp0gGbCUHd6Ax-nG0_hLohReLY8NFi95w68aOwxqb-nHgeVOS-vTcXKDteP3FT7w26-a-u8cxO4PDoXKd9m7g4y5P3rSlL38fabbuHT-4A1NHbAJvrUjw3698WffnzlcD9WjdAJCHoWEEr2nS1DFhOo7UpuV5iE_nlvdbje5MJc5gFCjiGqPyD',
-};
-
-export const mockPlan = {
-  name: 'Standard Plan',
-  price: '₹25/week',
-  coverage: '₹900/day',
-  status: 'Active',
-};
-
-export const mockWeather = {
-  rainfall: 65, // > 50 triggers claim
-  aqi: 85,
-  temp: 34,
-  cycloneAlert: false,
-  riskLevel: 'Medium Risk',
-  riskScore: 62,
-  location: 'Chennai (Central Zone)',
-};
-
-export const mockClaim = {
-  workInterruption: '4 hours',
-  estimatedLoss: '₹450',
-  zone: 'Chennai Sector 4, High Risk',
-  reason: 'Income loss due to Heavy Rain',
-  duration: '4 hours (2 PM - 6 PM)',
-  transactionId: '#GS82931',
-};
-
-export const mockEarnings = {
-  thisWeek: '₹4,250',
-  trend: '+12% from last week',
-};
-
 export function AppProvider({ children }) {
-  const [selectedPlan, setSelectedPlan] = useState(mockPlan);
-  
-  const claimTriggered = mockWeather.rainfall > 50;
+  // ─── Auth State ───────────────────────────────────────────────────────────────
+  const [token, setToken] = useState(null);
+  const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [authLoading, setAuthLoading] = useState(false);
+  const [authError, setAuthError] = useState(null);
+
+  // ─── Plans State ─────────────────────────────────────────────────────────────
+  const [plans, setPlans] = useState([]);
+  const [plansLoading, setPlansLoading] = useState(false);
+
+  // ─── Weather/Risk State ──────────────────────────────────────────────────────
+  const [weather, setWeather] = useState(null);
+  const [weatherLoading, setWeatherLoading] = useState(false);
+
+  // ─── Claims State ────────────────────────────────────────────────────────────
+  const [claims, setClaims] = useState([]);
+  const [claimsLoading, setClaimsLoading] = useState(false);
+
+  // ─── Payouts State ───────────────────────────────────────────────────────────
+  const [payouts, setPayouts] = useState([]);
+  const [payoutsLoading, setPayoutsLoading] = useState(false);
+
+  // ─── AUTH FUNCTIONS ───────────────────────────────────────────────────────────
+
+  // Called after OTP verified — saves token and loads user
+  const loginWithToken = async (jwtToken, userData) => {
+    await saveToken(jwtToken);
+    setToken(jwtToken);
+    setUser(userData);
+    setIsLoggedIn(true);
+  };
+
+  // Logout — clear everything
+  const logout = async () => {
+    await removeToken();
+    setToken(null);
+    setUser(null);
+    setIsLoggedIn(false);
+    setWeather(null);
+    setClaims([]);
+    setPayouts([]);
+  };
+
+  // Refresh user profile from backend
+  const refreshUser = async () => {
+    try {
+      const res = await userAPI.getMe();
+      setUser(res.data.user);
+      return res.data.user;
+    } catch (err) {
+      console.log('refreshUser error:', err.message);
+    }
+  };
+
+  // ─── DATA FETCH FUNCTIONS ─────────────────────────────────────────────────────
+
+  const fetchPlans = useCallback(async () => {
+    setPlansLoading(true);
+    try {
+      const res = await planAPI.getPlans();
+      setPlans(res.data.plans);
+    } catch (err) {
+      console.log('fetchPlans error:', err.message);
+    } finally {
+      setPlansLoading(false);
+    }
+  }, []);
+
+  const fetchWeather = useCallback(async () => {
+    setWeatherLoading(true);
+    try {
+      const res = await weatherAPI.getWeather();
+      setWeather(res.data.weather);
+    } catch (err) {
+      console.log('fetchWeather error:', err.message);
+    } finally {
+      setWeatherLoading(false);
+    }
+  }, []);
+
+  // Load plans on mount (they're public)
+  useEffect(() => {
+    fetchPlans();
+  }, [fetchPlans]);
+
+  // Load weather when user is logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchWeather();
+    }
+  }, [isLoggedIn, fetchWeather]);
+
+  // ─── COMPUTED VALUES ──────────────────────────────────────────────────────────
+  const activePlan = user?.activePlan || null;
+  const claimTriggered = weather ? weather.canClaim : false;
 
   return (
-    <AppContext.Provider value={{ 
-      selectedPlan, setSelectedPlan, 
-      claimTriggered
-    }}>
+    <AppContext.Provider
+      value={{
+        // Auth
+        token,
+        user,
+        isLoggedIn,
+        authLoading, setAuthLoading,
+        authError, setAuthError,
+        loginWithToken,
+        logout,
+        refreshUser,
+
+        // Plans
+        plans,
+        plansLoading,
+        fetchPlans,
+        activePlan,
+
+        // Weather
+        weather,
+        weatherLoading,
+        fetchWeather,
+        claimTriggered,
+
+        // Claims
+        claims, setClaims,
+        claimsLoading, setClaimsLoading,
+
+        // Payouts
+        payouts, setPayouts,
+        payoutsLoading, setPayoutsLoading,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
